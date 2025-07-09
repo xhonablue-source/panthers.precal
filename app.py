@@ -6,8 +6,18 @@ import numpy as np
 st.set_page_config(page_title="Panther Vision: See the Function", page_icon="👁️")
 
 # --- Developer Credit ---
-st.markdown("### 🧠 www.cognitivecloud.ai")
-st.markdown("**Developed by Xavier Honablue M.Ed**")
+col1, col2 = st.columns([1, 4])
+with col1:
+    # Englewood STEM HS Logo - you'll need to add the logo file to your project
+    try:
+        st.image("englewood_stem_logo.png", width=80)
+    except:
+        st.markdown("🏫")  # Fallback if logo file not found
+
+with col2:
+    st.markdown("### www.cognitivecloud.ai")
+    st.markdown("**Developed for Englewood STEM HS by Xavier Honablue M.Ed**")
+
 st.markdown("---")
 
 # --- Title and Intro ---
