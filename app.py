@@ -5,14 +5,43 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Page Setup
-st.set_page_config(page_title="Panther Vision: See the Function", page_icon="👁️")
+st.set_page_config(page_title="Panther Vision: See the Function", page_icon="🐆")
 
 # Title and Intro
-st.title("👁️ Panther Vision: See the Function")
+st.title("🐆 Panther Vision: See the Function")
 st.markdown("""
-Welcome, **Englewood STEM Panthers**!  
-This MathCraft lesson helps you **see, understand, and recognize** real-life functions — and what they mean for your world.
+### *Temet Nosce* — Know Thyself  
+**Panthers know themselves, and they know a function when they see one.**  
+Pre-Calculus is about recognizing patterns and relationships — especially functions — so that they can be modeled, predicted, and **commanded**.
 
+---
+
+### 🎯 Purpose:
+This lesson helps you:
+- **Recognize** real-world functions
+- **Understand** their structure and meaning
+- **Command** them using mathematical models
+""")
+
+# Standards Dropdowns
+with st.expander("📘 Illinois Pre-Calculus Standards"):
+    st.markdown("""
+- **MA.F-IF.A.1**: Understand that a function is a rule that assigns to each input exactly one output.
+- **MA.F-IF.B.4**: For a function that models a relationship, interpret key features of graphs and tables.
+- **MA.F-IF.C.7**: Graph functions expressed symbolically and show key features.
+- **MA.F-BF.A.1**: Write a function that describes a relationship.
+""")
+
+with st.expander("📚 Common Core Math Practices"):
+    st.markdown("""
+- **MP.1**: Make sense of problems and persevere in solving them  
+- **MP.2**: Reason abstractly and quantitatively  
+- **MP.4**: Model with mathematics  
+- **MP.7**: Look for and make use of structure
+""")
+
+# Classic Explanation
+st.markdown("""
 ---
 
 ### 📘 Classic Explanation (McGraw-Hill Style):
@@ -21,13 +50,6 @@ Think of it like a vending machine: press a button (input), get a snack (output)
 You wouldn’t press one button and get random snacks — that’s not a function.
 
 ---
-
-### 🎯 Objective:
-By the end of this lesson, you'll be able to:
-- Define and identify functions
-- Distinguish between function types
-- Match real-life examples to function models
-- Interpret graphs and expressions
 """)
 
 # Student Info
