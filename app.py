@@ -201,7 +201,7 @@ examples = [
     },
     {
         "label": "Phone Battery",
-        "rule": lambda x: max(0, 100 - 10 * x),
+        "rule": lambda x: np.maximum(0, 100 - 10 * x),
         "expr": "f(x) = 100 - 10x",
         "unit": "(%)",
         "desc": "🔋 Lose 10% battery per hour of use.",
