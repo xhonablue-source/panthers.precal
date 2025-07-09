@@ -28,13 +28,8 @@ By the end of this lesson, you'll be able to:
 - Interpret graphs and expressions
 """)
 
-# --- Common Core Strand Selection ---
-strand = st.selectbox("📚 Choose a Common Core Math Strand:", [
-    "HSA-CED.A.1 – Create equations",
-    "HSF-IF.B.4 – Interpret key features of functions",
-    "HSF-IF.C.7 – Graph functions expressed symbolically",
-    "HSF-BF.A.1 – Build a function that models a relationship"
-])
+# Illinois Learning Standards Alignment
+st.info("📚 **Illinois Learning Standards:** This lesson aligns with high school function standards including interpreting, building, and graphing functions in real-world contexts.")
 
 # --- Student Info (Moved Up) ---
 name = st.text_input("Enter your name:")
@@ -443,12 +438,35 @@ Keep your **Panther Vision** sharp and you'll see functions everywhere! 🐾
 # IXL Integration Section
 st.header("📚 IXL Practice & Related Lessons")
 
-# IXL lessons organized by grade level and topic
+# Common Core Strand Selection for Targeted Resources
+st.subheader("🎯 Choose Your Learning Focus")
+strand = st.selectbox("Select a Common Core Math Strand to customize your resources:", [
+    "HSA-CED.A.1 – Create equations",
+    "HSF-IF.B.4 – Interpret key features of functions", 
+    "HSF-IF.C.7 – Graph functions expressed symbolically",
+    "HSF-BF.A.1 – Build a function that models a relationship"
+])
+
+# Adaptive content based on strand selection
+if "HSA-CED.A.1" in strand:
+    st.info("🎯 **Focus: Creating Equations** - Resources emphasize building function equations from word problems and real-world scenarios.")
+    emphasis = "equation_building"
+elif "HSF-IF.B.4" in strand:
+    st.info("🎯 **Focus: Interpreting Key Features** - Resources emphasize domain, range, intercepts, and analyzing function behavior.")
+    emphasis = "key_features"
+elif "HSF-IF.C.7" in strand:
+    st.info("🎯 **Focus: Graphing Functions** - Resources emphasize visual interpretation, graphing techniques, and reading graphs.")
+    emphasis = "graphing"
+else:  # HSF-BF.A.1
+    st.info("🎯 **Focus: Building Function Models** - Resources emphasize real-world modeling and creating functions from situations.")
+    emphasis = "modeling"
+
+# IXL lessons organized by grade level and topic - now adaptive based on strand
 ixl_lessons = {
     "Algebra 1": {
         "Function Basics": [
             "A.1 - Identify functions",
-            "A.2 - Evaluate functions",
+            "A.2 - Evaluate functions", 
             "A.3 - Domain and range of functions",
             "A.5 - Graph a function",
             "A.6 - Find the slope of a graph"
@@ -456,7 +474,7 @@ ixl_lessons = {
         "Linear Functions": [
             "B.1 - Identify linear functions",
             "B.2 - Find the slope of a linear function",
-            "B.3 - Graph a linear function",
+            "B.3 - Graph a linear function", 
             "B.4 - Write linear functions: word problems",
             "B.5 - Interpret the graph of a linear function"
         ],
@@ -468,7 +486,7 @@ ixl_lessons = {
         ],
         "Quadratic Functions": [
             "Q.1 - Identify quadratic functions",
-            "Q.2 - Evaluate quadratic functions",
+            "Q.2 - Evaluate quadratic functions", 
             "Q.3 - Graph quadratic functions",
             "Q.4 - Solve quadratic equations by graphing"
         ]
@@ -483,7 +501,7 @@ ixl_lessons = {
         ],
         "Polynomial Functions": [
             "B.1 - Polynomial vocabulary",
-            "B.2 - Evaluate polynomials",
+            "B.2 - Evaluate polynomials", 
             "B.3 - Add and subtract polynomials",
             "B.4 - Graph polynomial functions"
         ],
@@ -498,7 +516,7 @@ ixl_lessons = {
         "Function Analysis": [
             "A.1 - Function composition",
             "A.2 - Inverse functions",
-            "A.3 - Even and odd functions",
+            "A.3 - Even and odd functions", 
             "A.4 - Domain and range of functions"
         ],
         "Trigonometric Functions": [
@@ -509,6 +527,25 @@ ixl_lessons = {
         ]
     }
 }
+
+# Adaptive IXL recommendations based on strand
+if emphasis == "equation_building":
+    st.markdown("**🎯 Recommended for Creating Equations:**")
+    priority_lessons = ["B.4 - Write linear functions: word problems", "P.4 - Exponential growth and decay: word problems", "A.2 - Evaluate functions"]
+elif emphasis == "key_features":
+    st.markdown("**🎯 Recommended for Interpreting Key Features:**") 
+    priority_lessons = ["A.3 - Domain and range of functions", "B.5 - Interpret the graph of a linear function", "A.1 - Domain and range of functions"]
+elif emphasis == "graphing":
+    st.markdown("**🎯 Recommended for Graphing Functions:**")
+    priority_lessons = ["A.5 - Graph a function", "B.3 - Graph a linear function", "P.3 - Graph exponential functions", "Q.3 - Graph quadratic functions"]
+else:  # modeling
+    st.markdown("**🎯 Recommended for Building Function Models:**")
+    priority_lessons = ["B.4 - Write linear functions: word problems", "P.4 - Exponential growth and decay: word problems", "A.2 - Evaluate functions"]
+
+for lesson in priority_lessons:
+    st.write(f"⭐ **{lesson}**")
+
+st.markdown("---")
 
 # Let user select grade level for IXL recommendations
 grade_level = st.selectbox("Select your grade level for IXL recommendations:", list(ixl_lessons.keys()))
@@ -693,5 +730,6 @@ if st.button("Generate My Study Plan"):
     else:
         st.info("💡 **Tip:** Consider pursuing advanced topics like calculus or mathematical modeling.")
 
-# Display selected strand alignment
-st.info(f"📚 **Common Core Alignment:** {strand}")
+st.markdown("---")
+st.markdown(f"**🎯 Your Selected Focus:** {strand}")
+st.markdown("**📍 Illinois Learning Standards:** This lesson supports high school function standards and mathematical modeling practices.")
