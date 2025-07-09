@@ -39,7 +39,7 @@ strand = st.selectbox("📚 Choose a Common Core Math Strand:", [
 # --- Student Info (Moved Up) ---
 name = st.text_input("Enter your name:")
 avatar = st.selectbox("Choose your multidimensional shape avatar:", [
-    "🔺 Tetrahedron", "🚘 Dodecahedron", "🪒 Cube", "🌀 Torus"
+    "🔺 Tetrahedron", "🚘 Dodecahedron", "⬛ Cube", "🌀 Torus"
 ])
 
 if name:
@@ -63,8 +63,113 @@ role = st.selectbox("Pick your learning mode or style:", role_options)
 # --- Function Explorer Section ---
 st.header("🔍 Let's explore what a function looks like in real life...")
 
+# Matching Activity Section
+st.header("🎯 Function Matching Challenge")
+st.markdown("**Match each function rule to its real-life context before exploring the visualizations!**")
+
+# Create the matching data
+matching_data = {
+    "Function Name": [
+        "Hourly Pay", "Spotify Streams", "Uber Fare", "Phone Battery", 
+        "Basketball Arc", "YouTube Subs", "Gym Progress", "Bus Time", 
+        "Temperature Drop", "Water Bill"
+    ],
+    "Rule f(x)": [
+        "f(x) = 15x (USD)", "f(x) = 100 × 1.5^x", "f(x) = 2.5x + 3", 
+        "f(x) = 100 - 10x (%)", "f(x) = -1(x - 5)² + 25 (feet)", 
+        "f(x) = 2000 + 50x (subs)", "f(x) = 100 × log(x+1) (lbs)", 
+        "f(x) = 10x + 5 (minutes)", "f(x) = 70 - 2x (°F)", 
+        "f(x) = 25 + 1.75x"
+    ],
+    "Real-Life Context": [
+        "💵 Earn $15 per hour at a part-time job",
+        "🎧 Get 100 → viral streams over days", 
+        "🚗 $3 base + $2.5 per mile for a ride",
+        "🔋 Lose 10% battery/hour",
+        "🏀 Parabolic jump shot arc",
+        "📺 Gain 50 subs/week from a fanbase",
+        "🏋🏽 Build strength — slows over time",
+        "🚌 Each stop adds 10 mins + 5 min base",
+        "🌡️ Decrease of 2°F/hour",
+        "🚿 Pay $25 base + $1.75 per gallon"
+    ]
+}
+
+# Display as a styled table
+import pandas as pd
+df = pd.DataFrame(matching_data)
+
+# Add some visual styling
+st.markdown("""
+<style>
+.matching-table {
+    font-size: 14px;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+.matching-table th {
+    background-color: #f0f2f6;
+    padding: 12px;
+    border: 1px solid #ddd;
+    font-weight: bold;
+}
+.matching-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    vertical-align: top;
+}
+.function-name {
+    font-weight: bold;
+    color: #1f77b4;
+}
+.function-rule {
+    font-family: 'Courier New', monospace;
+    background-color: #f8f9fa;
+    padding: 4px;
+    border-radius: 4px;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.dataframe(df, use_container_width=True, hide_index=True)
+
+# Interactive matching quiz
+st.subheader("📝 Quick Matching Quiz")
+st.markdown("Test your understanding by matching these function types:")
+
+# Quiz questions for matching
+quiz_options = {
+    "Which function represents EXPONENTIAL growth?": {
+        "options": ["f(x) = 15x", "f(x) = 100 × 1.5^x", "f(x) = 2.5x + 3", "f(x) = 100 - 10x"],
+        "correct": "f(x) = 100 × 1.5^x",
+        "explanation": "Exponential functions have the variable in the exponent (1.5^x), showing rapid growth!"
+    },
+    "Which function shows a QUADRATIC relationship?": {
+        "options": ["f(x) = 70 - 2x", "f(x) = -1(x - 5)² + 25", "f(x) = 100 × log(x+1)", "f(x) = 25 + 1.75x"],
+        "correct": "f(x) = -1(x - 5)² + 25",
+        "explanation": "Quadratic functions have x², creating parabolic shapes like a basketball arc!"
+    },
+    "Which function has a CONSTANT rate of change?": {
+        "options": ["f(x) = 100 × 1.5^x", "f(x) = 100 × log(x+1)", "f(x) = 15x", "f(x) = -1(x - 5)² + 25"],
+        "correct": "f(x) = 15x",
+        "explanation": "Linear functions like f(x) = 15x have constant rates - you earn the same $15 every hour!"
+    }
+}
+
+for question, data in quiz_options.items():
+    st.write(f"**{question}**")
+    user_answer = st.radio("Select your answer:", data["options"], key=question)
+    
+    if st.button(f"Check Answer", key=f"check_{question}"):
+        if user_answer == data["correct"]:
+            st.success(f"✅ Correct! {data['explanation']}")
+        else:
+            st.error(f"❌ Try again! The correct answer is {data['correct']}. {data['explanation']}")
+
+st.markdown("---")
+
 # Real-Life Function Examples
-st.header("🔟 Mapped Function Examples")
+st.header("🔟 Interactive Function Visualizations")
 
 examples = [
     {
@@ -197,7 +302,7 @@ if selected_ex:
         # Create the plot
         fig, ax = plt.subplots(figsize=(10, 6))
         ax.plot(x_vals, y_vals, linewidth=3, color='#1f77b4')
-        ax.set_title(f"{selected_ex['label']} — {selected_ex['expr']} {selected_ex['unit']}", 
+        ax.set_title(f"{selected_ex['label']} {selected_ex['expr']} {selected_ex['unit']}", 
                     fontsize=14, fontweight='bold')
         ax.set_xlabel("Input (x)", fontsize=12)
         ax.set_ylabel(f"Output f(x) {selected_ex['unit']}", fontsize=12)
