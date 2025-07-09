@@ -13,7 +13,7 @@ This MathCraft lesson helps you **see, understand, and recognize** real-life fun
 
 ---
 
-### 📘 Classic Explanation (McGraw-Hill Style):
+### 📘 Classic Explanation:
 A **function** is a rule that connects every input to exactly one output.  
 Think of it like a vending machine: press a button (input), get a snack (output).  
 You wouldn't press one button and get random snacks — that's not a function.
