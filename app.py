@@ -31,6 +31,22 @@ By the end of this lesson, you'll be able to:
 # Illinois Learning Standards Alignment
 st.info("📚 **Illinois Learning Standards:** This lesson aligns with high school function standards including interpreting, building, and graphing functions in real-world contexts.")
 
+# Illinois Standards Dropdown
+illinois_standard = st.selectbox("📋 Select specific Illinois Learning Standard:", [
+    "HSA.F.IF.1 - Understand that a function assigns to each input exactly one output",
+    "HSA.F.IF.2 - Use function notation, evaluate functions for inputs in their domains", 
+    "HSA.F.IF.4 - Interpret key features of graphs and tables in terms of quantities",
+    "HSA.F.IF.5 - Relate domain of a function to its graph and to relationships it describes",
+    "HSA.F.IF.7 - Graph functions expressed symbolically and show key features",
+    "HSA.F.IF.8 - Write a function defined by an expression in different equivalent forms",
+    "HSA.F.IF.9 - Compare properties of two functions each represented in a different way",
+    "HSA.F.BF.1 - Write a function that describes a relationship between two quantities",
+    "HSA.F.BF.3 - Identify the effect on the graph of replacing f(x) by f(x) + k",
+    "HSA.F.LE.1 - Distinguish between situations that can be modeled with linear functions",
+    "HSA.F.LE.2 - Construct linear and exponential functions given a graph or description",
+    "HSA.F.LE.3 - Observe using graphs and tables that exponential functions grow by factors"
+])
+
 # --- Student Info (Moved Up) ---
 name = st.text_input("Enter your name:")
 avatar = st.selectbox("Choose your multidimensional shape avatar:", [
