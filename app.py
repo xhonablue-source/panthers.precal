@@ -12,7 +12,7 @@ with col1:
     try:
         st.image("englewood_stem_logo.png", width=80)
     except:
-        st.markdown("🏫")  # Fallback if logo file not found
+        pass  # No fallback if logo file not found
 
 with col2:
     st.markdown("### www.cognitivecloud.ai")
