@@ -562,16 +562,33 @@ ixl_lessons = {
 # Adaptive IXL recommendations based on strand
 if emphasis == "equation_building":
     st.markdown("**🎯 Recommended for Creating Equations:**")
-    priority_lessons = ["B.4 - Write linear functions: word problems", "P.4 - Exponential growth and decay: word problems", "A.2 - Evaluate functions"]
+    priority_lessons = [
+        "Algebra 1 > B.4 - Write linear functions: word problems", 
+        "Algebra 1 > P.4 - Exponential growth and decay: word problems", 
+        "Algebra 1 > A.2 - Evaluate functions"
+    ]
 elif emphasis == "key_features":
     st.markdown("**🎯 Recommended for Interpreting Key Features:**") 
-    priority_lessons = ["A.3 - Domain and range of functions", "B.5 - Interpret the graph of a linear function", "A.1 - Domain and range of functions"]
+    priority_lessons = [
+        "Algebra 1 > A.3 - Domain and range of functions", 
+        "Algebra 1 > B.5 - Interpret the graph of a linear function", 
+        "Algebra 2 > A.1 - Domain and range of functions"
+    ]
 elif emphasis == "graphing":
     st.markdown("**🎯 Recommended for Graphing Functions:**")
-    priority_lessons = ["A.5 - Graph a function", "B.3 - Graph a linear function", "P.3 - Graph exponential functions", "Q.3 - Graph quadratic functions"]
+    priority_lessons = [
+        "Algebra 1 > A.5 - Graph a function", 
+        "Algebra 1 > B.3 - Graph a linear function", 
+        "Algebra 1 > P.3 - Graph exponential functions", 
+        "Algebra 1 > Q.3 - Graph quadratic functions"
+    ]
 else:  # modeling
     st.markdown("**🎯 Recommended for Building Function Models:**")
-    priority_lessons = ["B.4 - Write linear functions: word problems", "P.4 - Exponential growth and decay: word problems", "A.2 - Evaluate functions"]
+    priority_lessons = [
+        "Algebra 1 > B.4 - Write linear functions: word problems", 
+        "Algebra 1 > P.4 - Exponential growth and decay: word problems", 
+        "Algebra 1 > A.2 - Evaluate functions"
+    ]
 
 for lesson in priority_lessons:
     st.write(f"⭐ **{lesson}**")
